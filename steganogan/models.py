@@ -123,6 +123,7 @@ class SteganoGAN(object):
             decoded (bytes): Data decoded from the generated image.
         """
         payload = self._random_data(cover)
+        payload = payload.to(self.device)
         generated = self.encoder(cover, payload)
         if quantize:
             generated = (255.0 * (generated + 1.0) / 2.0).long()
@@ -150,7 +151,6 @@ class SteganoGAN(object):
             gc.collect()
             cover = cover.to(self.device)
             payload = self._random_data(cover)
-            payload = payload.to(self.device)
             generated = self.encoder(cover, payload)
             cover_score = self._critic(cover)
             generated_score = self._critic(generated)
