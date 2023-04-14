@@ -43,13 +43,14 @@ def bits_to_bytearray(bits):
 def text_to_bytearray(text):
     """Compress and add error correction"""
     assert isinstance(text, str), "expected a string"
-    # x = zlib.compress(text.encode("utf-8"))
+    x = zlib.compress(text.encode("utf-8"))
 
-    # x = rs.encode(bytearray(x))
-    x = text.encode("utf-8")
+    x = rs.encode(bytearray(x))
+    # x = text.encode("utf-8")
 
     with open("input.txt", "wb") as file:
       file.write(x)
+
     return x
 
 
@@ -57,10 +58,13 @@ def bytearray_to_text(x):
     """Apply error correction and decompress"""
     assert isinstance(x, bytearray), "expected a bytearray"
     try:
+
+        with open("input.txt", "wb") as file:
+          file.write(x)
           
-        # text = rs.decode(x)
-        # text = zlib.decompress(text)
-        ans =  x.decode("utf-8")
+        text = rs.decode(x)
+        text = zlib.decompress(text)
+        # ans =  x.decode("utf-8")
         return ans
     except BaseException:
         return False

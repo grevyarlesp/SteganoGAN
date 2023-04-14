@@ -305,6 +305,7 @@ class SteganoGAN(object):
         # _, _, height, width = cover.size()
         payload = self._make_payload(cover_size[3], cover_size[2], self.data_depth, text)
 
+
         cover = cover.to(self.device)
         payload = payload.to(self.device)
         generated = self.encoder(cover, payload)[0].clamp(-1.0, 1.0)
