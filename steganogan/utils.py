@@ -35,6 +35,7 @@ def bits_to_bytearray(bits):
     ints = []
     for b in range(len(bits) // 8):
         byte = bits[b * 8:(b + 1) * 8]
+        byte = [int(b) for b in byte]
         ints.append(int(''.join([str(bit) for bit in byte]), 2))
     return bytearray(ints)
 
