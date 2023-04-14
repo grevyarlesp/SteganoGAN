@@ -283,7 +283,7 @@ class SteganoGAN(object):
         while len(payload) < width * height * depth:
             payload.extend(message)
 
-        payload = np.array(payload).flatten()
+        # payload = np.array(payload).flatten()
 
         # print(payload)
 
