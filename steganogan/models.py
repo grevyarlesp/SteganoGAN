@@ -122,6 +122,7 @@ class SteganoGAN(object):
             payload (bytes): Random data that has been encoded in the image.
             decoded (bytes): Data decoded from the generated image.
         """
+        cover = cover.to(self.device)
         payload = self._random_data(cover)
         payload = payload.to(self.device)
         generated = self.encoder(cover, payload)
@@ -194,6 +195,7 @@ class SteganoGAN(object):
 
     def _validate(self, validate, metrics):
         """Validation process"""
+        print("Validate ")
         for cover, _ in tqdm(validate, disable=not self.verbose):
             gc.collect()
             cover = cover.to(self.device)
