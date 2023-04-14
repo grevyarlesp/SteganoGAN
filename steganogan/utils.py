@@ -66,7 +66,7 @@ def bytearray_to_text(x):
         text = text.decode("utf-8")
 
         with open("output.txt", "wb") as file:
-          file.write(x)
+          file.write(text)
 
         return text
     except BaseException:
