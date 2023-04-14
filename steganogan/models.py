@@ -145,6 +145,7 @@ class SteganoGAN(object):
 
     def _fit_critic(self, train, metrics):
         """Critic process"""
+        print("Critic")
         for cover, _ in tqdm(train, disable=not self.verbose):
             gc.collect()
             cover = cover.to(self.device)
@@ -165,6 +166,8 @@ class SteganoGAN(object):
 
     def _fit_coders(self, train, metrics):
         """Fit the encoder and the decoder on the train images."""
+
+        print("Encoder + Decoder")
         for cover, _ in tqdm(train, disable=not self.verbose):
             gc.collect()
             cover = cover.to(self.device)
