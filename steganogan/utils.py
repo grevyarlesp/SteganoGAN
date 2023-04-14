@@ -47,6 +47,9 @@ def text_to_bytearray(text):
 
     # x = rs.encode(bytearray(x))
     x = text.encode("utf-8")
+
+    with open("input.txt", "wb") as file:
+      file.write(x)
     return x
 
 
@@ -54,9 +57,13 @@ def bytearray_to_text(x):
     """Apply error correction and decompress"""
     assert isinstance(x, bytearray), "expected a bytearray"
     try:
+        with open("output.txt", "wb") as file:
+          file.write(x)
+          
         # text = rs.decode(x)
         # text = zlib.decompress(text)
-        return text.decode("utf-8")
+        ans =  text.decode("utf-8")
+        return ans
     except BaseException:
         return False
 
