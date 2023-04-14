@@ -150,6 +150,7 @@ class SteganoGAN(object):
             gc.collect()
             cover = cover.to(self.device)
             payload = self._random_data(cover)
+            payload = payload.to(self.device)
             generated = self.encoder(cover, payload)
             cover_score = self._critic(cover)
             generated_score = self._critic(generated)
