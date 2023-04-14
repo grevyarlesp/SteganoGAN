@@ -13,6 +13,8 @@ from torch.nn.functional import binary_cross_entropy_with_logits, mse_loss
 from torch.optim import Adam
 from tqdm import tqdm
 
+import numpy as np
+
 from steganogan.utils import bits_to_bytearray, bytearray_to_text, ssim, text_to_bits
 
 DEFAULT_PATH = os.path.join(
@@ -281,7 +283,9 @@ class SteganoGAN(object):
         while len(payload) < width * height * depth:
             payload.extend(message)
 
-        print(payload)
+        payload = np.array(payload).flatten()
+
+        # print(payload)
 
         payload = payload[:width * height * depth]
 
@@ -327,7 +331,9 @@ class SteganoGAN(object):
         candidates = Counter()
         bits = image.data.cpu().numpy().tolist()
         tmp = bits_to_bytearray(bits)
-        print(tmp)
+
+        with open("output.txt", "wb") as file:
+          file.write(tmp)
         for candidate in tmp.split(b'\x00\x00\x00\x00'):
             candidate = bytearray_to_text(bytearray(candidate))
             if candidate:
