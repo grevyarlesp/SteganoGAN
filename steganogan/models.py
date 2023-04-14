@@ -279,7 +279,9 @@ class SteganoGAN(object):
 
         payload = message
         while len(payload) < width * height * depth:
-            payload += message
+            payload.extend(message)
+
+        print(payload)
 
         payload = payload[:width * height * depth]
 
