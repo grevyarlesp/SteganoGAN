@@ -58,8 +58,7 @@ def bytearray_to_text(x):
     """Apply error correction and decompress"""
     assert isinstance(x, bytearray), "expected a bytearray"
     try:
-
-        with open("input.txt", "wb") as file:
+        with open("output.txt", "wb") as file:
           file.write(x)
           
         # text = rs.decode(x)
