@@ -64,6 +64,7 @@ def bytearray_to_text(x):
           
         text = rs.decode(x)
         text = zlib.decompress(text)
+        ans = text.decode("utf-8")
         # ans =  x.decode("utf-8")
         return ans
     except BaseException:
