@@ -64,7 +64,7 @@ def bytearray_to_text(x):
         text = zlib.decompress(text)
         text = text.decode("utf-8")
 
-        with open("output.txt", "wb") as file:
+        with open("output.txt", "w") as file:
           file.write(text)
 
         return text

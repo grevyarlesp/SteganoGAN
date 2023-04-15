@@ -345,6 +345,7 @@ class SteganoGAN(object):
         bits = [int(x) for x in bits]
 
         with open('output_bits.txt', 'w') as f:
+          print("Bit length", len(bits))
           f.write(''.join([str(x) for x in bits]))
 
         tmp = bits_to_bytearray(bits)
