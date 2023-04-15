@@ -70,7 +70,7 @@ def bytearray_to_text(x):
 
         return text
     except Exception as e:
-        print(e)
+        print("Exception", e)
         return False
 
 

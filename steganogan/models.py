@@ -311,7 +311,7 @@ class SteganoGAN(object):
         cover_size = cover.size()
         # _, _, height, width = cover.size()
 
-        print("Cover size = ", cover_size[3], cover_size[2])
+        # print("Cover size = ", cover_size[3], cover_size[2])
         payload = self._make_payload(cover_size[3], cover_size[2], self.data_depth, text)
 
 
@@ -346,7 +346,7 @@ class SteganoGAN(object):
           file.write(tmp)
         for candidate in tmp.split(b'\x00\x00\x00\x00'):
             candidate = bytearray_to_text(bytearray(candidate))
-            print(candidate)
+            # print(candidate)
             if candidate:
                 candidates[candidate] += 1
 
