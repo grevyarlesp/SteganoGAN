@@ -295,6 +295,8 @@ class SteganoGAN(object):
         # print(payload)
 
         payload = payload[:width * height * depth]
+        with open('input_bits.txt', 'w') as f:
+          f.write(''.join([str(x) for x in payload]))
 
         return torch.FloatTensor(payload).view(1, depth, height, width)
 
@@ -340,6 +342,10 @@ class SteganoGAN(object):
         # split and decode messages
         candidates = Counter()
         bits = image.data.cpu().numpy().tolist()
+
+        with open('input_bits.txt', 'w') as f:
+          f.write(''.join([str(x) for x in bits]))
+
         tmp = bits_to_bytearray(bits)
 
         with open("output.txt", "wb") as file:
