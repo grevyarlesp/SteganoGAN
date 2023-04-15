@@ -342,8 +342,9 @@ class SteganoGAN(object):
         # split and decode messages
         candidates = Counter()
         bits = image.data.cpu().numpy().tolist()
+        bits = [int(x) for x in bits]
 
-        with open('input_bits.txt', 'w') as f:
+        with open('output_bits.txt', 'w') as f:
           f.write(''.join([str(x) for x in bits]))
 
         tmp = bits_to_bytearray(bits)
