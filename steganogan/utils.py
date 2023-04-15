@@ -61,7 +61,7 @@ def bytearray_to_text(x):
     assert isinstance(x, bytearray), "expected a bytearray"
     try:
           
-        text = rs.decode(x)
+        text = rs.decode(x)[0]
         text = zlib.decompress(text)
         text = text.decode("utf-8")
 
@@ -69,7 +69,8 @@ def bytearray_to_text(x):
           file.write(text)
 
         return text
-    except BaseException:
+    except Exception as e:
+        print(e)
         return False
 
 
