@@ -337,8 +337,8 @@ class SteganoGAN(object):
         image = torch.FloatTensor(image).permute(2, 1, 0).unsqueeze(0)
         image = image.to(self.device)
 
-        # image = self.decoder(image).view(-1) > 0
-        image = self.decoder(image).view(-1) >= 0.0
+        image = self.decoder(image).view(-1) > 0
+        # image = self.decoder(image).view(-1) >= 0.0
 
         # split and decode messages
         candidates = Counter()
