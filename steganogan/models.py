@@ -338,7 +338,7 @@ class SteganoGAN(object):
         image = image.to(self.device)
 
         # image = self.decoder(image).view(-1) > 0
-        image = self.decoder(image).view(-1) >= 0.5
+        image = self.decoder(image).view(-1) >= 0.0
 
         # split and decode messages
         candidates = Counter()
